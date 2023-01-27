@@ -1,4 +1,4 @@
-const express = require('express')
+/*const express = require('express')
 const app = express();
 const fs=require("fs");
 app.use(express.json());
@@ -35,21 +35,16 @@ app.get('/api', function (req, res) {
   })
   
   
-app.listen(3000)
+app.listen(3000)*/
 
-/*const express = require('express')
+const express = require('express')
 const app = express();
 const fs=require("fs");
 app.use(express.json());
 
-app.get('/api', function (req, res) {
-  
-  let data=JSON.parse(fs.readFileSync("./hello.json"));
-  res.json(data);
-    
-  })
-  app.post('/api', function (req, res) {
-    //Get body data from reques
+
+  app.post('/users', function (req, res) {
+    //Get body data from request
       let data=req.body;
       //Write to file
       fs.writeFileSync('./hello.json',JSON.stringify(data));
@@ -57,6 +52,12 @@ app.get('/api', function (req, res) {
       res.send("OK");
 
   })
+  app.get('/api', function (req, res) {
+  
+    let data=JSON.parse(fs.readFileSync("./hello.json"));
+    res.json(data);
+      
+    })
   
   
-app.listen(3000)*/
+app.listen(3000)

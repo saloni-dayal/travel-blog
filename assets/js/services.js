@@ -6,17 +6,21 @@ send.addEventListener("click",()=>{
     email=document.getElementById("email").value
     Date_of_Service=document.getElementById("service").value
     Number_of_days=document.getElementById("days").value
-    console.log(name)
-    console.log(service_name)
-    console.log(email)
-    const new_data={name:name,service_name:service_name,email:email,Date_of_Service:Date_of_Service,Number_of_days:Number_of_days}
-         if (localStorage.getItem("services")==null){
-            localStorage.setItem("services",'[]');
-         }
-          var old_data=JSON.parse(localStorage.getItem("services"))
-          old_data.push(new_data)
-          localStorage.setItem("services",JSON.stringify(old_data));
-          console.log(new_data)
-          window.open("services.html")
 
+    const xhr1=new XMLHttpRequest();
+    var url = 'http://127.0.0.1:3005/services';
+    xhr1.open("POST", url);
+    var data1={
+      name:name,
+      service_name:service_name,
+      email:email,
+      Date_of_Service:Date_of_Service,
+      Number_of_days:Number_of_days
+    };
+    data1=JSON.stringify(data1)
+    xhr1.setRequestHeader("content-type","application/json")
+
+    xhr1.send(data1)
+    console.log("success")
+    console.log(data1)
 })

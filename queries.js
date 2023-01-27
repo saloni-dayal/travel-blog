@@ -1,8 +1,16 @@
-query_data=JSON.parse(localStorage["queries"])
-console.log(query_data)
 var que=document.getElementById("usertab1")
 var num1=document.getElementById("num1")
-num1.innerHTML=query_data.length
+
+   
+   const xhr = new XMLHttpRequest();
+    var url = 'http://127.0.0.1:3006/queries';
+    xhr.open("GET", url);
+     xhr.send();
+    var data="empty";
+    xhr.onload = function () {
+        query_data = JSON.parse(xhr.responseText);
+
+        num1.innerHTML=query_data.length
 for(i=0;i<query_data.length;i++)
 {
     name=query_data[i].name
@@ -19,3 +27,5 @@ for(i=0;i<query_data.length;i++)
            <th>${message}</th>
            </tr>`;
 }
+    }
+

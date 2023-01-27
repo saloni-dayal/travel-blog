@@ -5,16 +5,18 @@ submit.addEventListener("click",()=>{
     src=document.getElementById("imgsrc").value
     name=document.getElementById("imgname").value
     data=document.getElementById("imgdata").value
-    const new_data={src:src,name:name,data:data}
-         if (localStorage.getItem("places")==null){
-            localStorage.setItem("places",'[]');
-         }
-          var old_data=JSON.parse(localStorage.getItem("places"))
-          old_data.push(new_data)
-          localStorage.setItem("places",JSON.stringify(old_data));
-          console.log(new_data)
+    const xhr1=new XMLHttpRequest();
+    var url = 'http://127.0.0.1:3008/places';
+    xhr1.open("POST", url);
+    var data1={
+      src:src,
+      name:name,
+      data:data
+    };
+    data1=JSON.stringify(data1)
+    xhr1.setRequestHeader("content-type","application/json")
+
+    xhr1.send(data1)
+    console.log("success")
 
 })
-window.onload=function(){
-
-}

@@ -3,14 +3,12 @@ var tab=document.getElementById("usertab");
 var num=document.getElementById("num")
 function run() {
     const xhr = new XMLHttpRequest();
-    var url = 'https://reqres.in/api/users?page=2';
+    var url = 'http://127.0.0.1:3007/users';
     xhr.open("GET", url);
      xhr.send();
-    var data="empty";
     xhr.onload = function () {
         data = JSON.parse(xhr.responseText);
-        user_data=data.data;
-        console.log(user_data);
+        user_data=data.data
         num.innerHTML=user_data.length;
         for(i=0;i<user_data.length;i++)
         {
@@ -40,37 +38,18 @@ function adduser(id,email,firstname,lastname){
 function postUser(){
     const xhr1=new XMLHttpRequest();
     var url = 'https://reqres.in/api/users';
-    xhr1.open("POST", url);
-    var data1={
-        id:"13",
-        email:"reddylikitha201@gmail.com",
-        firstname:"likitha",
-        lastname:"p"
+    xhr1.open("GET", url);
+     xhr1.send();
+    var data="empty";
+    xhr1.onload = function () {
+        user_data = JSON.parse(xhr.responseText);
     }
-    data1=JSON.stringify(data1)
+    xhr1.open("POST", 'http://127.0.0.1:3007/users');
+
+    data1=JSON.stringify(user_data)
     xhr1.setRequestHeader("content-type","application/json")
 
     xhr1.send(data1)
-    console.log("success")
-    xhr1.onload = function () {
-        user_data=JSON.parse(xhr1.responseText);
-        alert("Successful"+user_data.lastname)
-        console.log(user_data.email)
-  
-            id=user_data.id;
-            email=user_data.email;
-            firstname=user_data.firstname;
-            lastname=user_data.lastname;
-
-           tab.innerHTML+=`<tr>
-
-           <th>${id}</th>
-       
-           <th>${email}</th>
-           <th>${firstname}</th>
-           <th>${lastname}</th>
-           </tr>`;
         
     }
-}
 

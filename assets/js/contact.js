@@ -6,14 +6,32 @@ submit.addEventListener("click",()=>{
     email=document.getElementById("email").value
     subject=document.getElementById("subject").value
     message=document.getElementById("message").value
-    const new_data={name:name,email:email,subject:subject,message:message}
+
+
+    const xhr1=new XMLHttpRequest();
+    var url = 'http://127.0.0.1:3006/queries';
+    xhr1.open("POST", url);
+    var data1={
+      name:name,
+      email:email,
+      subject:subject,
+      message:message
+    };
+    data1=JSON.stringify(data1)
+    xhr1.setRequestHeader("content-type","application/json")
+
+    xhr1.send(data1)
+    console.log("success")
+    console.log(data1)
+    /*
          if (localStorage.getItem("queries")==null){
             localStorage.setItem("queries",'[]');
          }
           var old_data=JSON.parse(localStorage.getItem("queries"))
           old_data.push(new_data)
           localStorage.setItem("queries",JSON.stringify(old_data));
-          console.log(new_data)
-          window.open("contact.html")
+          console.log(new_data)*/
+
+   //   window.open("contact.html")
 
 })
