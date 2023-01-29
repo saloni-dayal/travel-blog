@@ -17,7 +17,10 @@ app.get('/users',function(req,res){
 })
 app.post('/users', function (req, res) {
       let data=req.body;
-    fs.writeFileSync("./users.json",JSON.stringify(data));
+      data2=JSON.parse(fs.readFileSync("./users.json"))
+      console.log(data2)
+      data2.push(data)
+    fs.writeFileSync("./users.json",JSON.stringify(data2));
  
       res.send("OK");
   })

@@ -1,5 +1,3 @@
-console.log("hi")
-
 var exists=(email)=>{
     console.log(email)
         if(localStorage.getItem(email))
@@ -7,13 +5,10 @@ var exists=(email)=>{
         return false;
        }
     const signup=document.getElementById("signup")
-    // signup.addEventListener("click", ()=>{
-    //     document.getElementsByClassName('signupFrm')[0].style.display=''
-       // const signup=document.getElementById('signup')
-       console.log(signup)
+        console.log(signup)
         signup.addEventListener("click",()=>{
-            console.log("buttonclicked")
-            const name=document.getElementById("firstname").value
+        console.log("buttonclicked")
+        const name=document.getElementById("firstname").value
         console.log(name)
         const email=document.getElementById("email").value
         console.log(email)
@@ -54,15 +49,16 @@ var exists=(email)=>{
     
         }
        else if(password!==cnfpassword){
+        alert("passwords are not matched")
         document.getElementById("password").value="";
         document.getElementById("cnfpassword").value=""
-    
         document.getElementById("password").placeholder="passwords not matched"
         document.getElementById("cnfpassword").placeholder="passwords not matched"
        }
    else if(exists(email)){
         document.getElementById("email").value="already exist"
-        window.open("home1.html")
+        alert("user already exists please login")
+        window.open("loginpage2.html")
       }
     
        else{
@@ -72,15 +68,22 @@ var exists=(email)=>{
             localStorage.setItem("users",'[]');
          }
          localStorage.setItem(email,JSON.stringify(new_data))
+         data1=JSON.stringify(new_data)
+         var url = 'http://127.0.0.1:3007/users';
+       $.ajaxSetup({ 
+          headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+       }
+       });
+       $.post(url,data1,function(xhr,status,responseText){
+          console.log(responseText);
+       });
           var old_data=JSON.parse(localStorage.getItem("users"))
           old_data.push(new_data)
           localStorage.setItem("users",JSON.stringify(old_data));
           console.log(new_data)
           window.open("home1.html")
-
-    
-        
-    
        }
     
         })

@@ -1,4 +1,47 @@
-const submit=document.getElementById("submit")
+
+$(document).ready(function(){
+   $("#submit").click(function(){
+      name=$("#name").val();
+      email=$("#email").val();
+      subject=$("#subject").val();
+      message=$("#message").val();
+      var data1={
+         name:name,
+         email:email,
+         subject:subject,
+         message:message
+       };
+       data1=JSON.stringify(data1);
+       console.log(data1)
+      var url = 'http://127.0.0.1:3006/queries';
+      $.ajaxSetup({ 
+         headers: {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json'
+      }
+      });
+      $.post(url,data1,function(xhr,status,responseText){
+         console.log(responseText);
+      });
+   });
+});
+ //xhr.setRequestHeader("content-type","application/json")
+         //xhr.send(data1);
+  // const xhr1=new XMLHttpRequest();
+      // var url = 'http://127.0.0.1:3006/queries';
+      // xhr1.open("POST", url);
+      // var data1={
+      // name:name,
+      // email:email,
+      // subject:subject,
+      // message:message
+      // };
+      // data1=JSON.stringify(data1)
+      // xhr1.setRequestHeader("content-type","application/json")
+
+      // xhr1.send(data1)
+
+/*const submit=document.getElementById("submit")
 submit.addEventListener("click",()=>{
     console.log("button clicked")
 
@@ -22,7 +65,7 @@ submit.addEventListener("click",()=>{
 
     xhr1.send(data1)
     console.log("success")
-    console.log(data1)
+    console.log(data1)*/
     /*
          if (localStorage.getItem("queries")==null){
             localStorage.setItem("queries",'[]');
@@ -34,4 +77,4 @@ submit.addEventListener("click",()=>{
 
    //   window.open("contact.html")
 
-})
+//})

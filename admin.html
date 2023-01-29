@@ -132,7 +132,7 @@
                     <div class="box box3">
                         <i class="uil uil-estate"></i>
                         <span class="text">Number of places</span>
-                        <span class="number">2</span>
+                        <span class="number" id="place">0</span>
                     </div>
                 </div>
             </div>
@@ -142,17 +142,18 @@
             <div id="users">
                 <div class="container">
                     <table>
-                        <th style="background-color:darkgrey;padding:12px;">Id</th>
+                        <th style="background-color:darkgrey;padding:12px;">Name</th>
+                        <th style="background-color:darkgrey;padding:12px;">Password</th>
                         <th style="background-color:darkgrey;padding:12px">E-Mail</th>
-                        <th style="background-color:darkgrey;padding:12px">First Name</th>
-                        <th style="background-color:darkgrey;padding:12px">Last Name</th>
+                        <th style="background-color:darkgrey;padding:12px">Username</th>
+                        <th style="background-color:darkgrey;padding:12px">Adress</th>
+                        <th style="background-color:darkgrey;padding:12px">Islogged</th>
                         <tbody id="usertab">
     
                         </tbody>
     
                     </table>
                 </div>
-                <button id="addus" class="btn btn-primary" onclick="postUser()">Add User</button>
             </div>
             <div id="users1">
                 <div class="container">
@@ -204,12 +205,13 @@
             
         </div>
     </section>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <script src="users.js"></script>
     <script src="queries.js"></script>
     <script src="places.js"></script>
     <script src="admin.js"></script>
+    <script src="projects.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>

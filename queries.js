@@ -1,4 +1,44 @@
-var que=document.getElementById("usertab1")
+// var que=document.getElementById("usertab1")
+var que=$("usertab1")
+// var num1=document.getElementById("num1")
+$(document).ready(function(){
+    var url = 'http://127.0.0.1:3006/queries';
+    $.get(url,function(data,status){
+        query_data=JSON.parse(data);
+        $("#num1").text(query_data.length)
+// let str="";
+for(i=0;i<query_data.length;i++)
+{
+    // console.log("hii....");
+    name=query_data[i].name
+    email=query_data[i].email
+    subject=query_data[i].subject
+    message=query_data[i].message
+
+    // str+=`<tr>
+
+    //        <th>${name}</th>
+       
+    //        <th>${email}</th>
+    //        <th>${subject}</th>
+    //        <th>${message}</th>
+    //        </tr>`;
+
+    $("#usertab1").append(`<tr>
+           <th>${name}</th>
+           <th>${email}</th>
+           <th>${subject}</th>
+           <th>${message}</th>
+           </tr>`)
+
+    }
+    // console.log(str);
+    // $("#usertab1").html(str);
+});
+});
+
+
+/*var que=document.getElementById("usertab1")
 var num1=document.getElementById("num1")
 
    
@@ -27,5 +67,5 @@ for(i=0;i<query_data.length;i++)
            <th>${message}</th>
            </tr>`;
 }
-    }
+    }*/
 

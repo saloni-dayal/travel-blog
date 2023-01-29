@@ -15,19 +15,24 @@ for( let i=0;i<user_data.length;i++){
         document.getElementById("heading").innerHTML=obj.name
         const edit=document.getElementById("edit")
 edit.addEventListener("click",()=>{
-    console.log("hi")
         const email1=obj.mail
-        obj.name=document.getElementById("name").value
-        obj.username=document.getElementById("username").value
-        obj.address=document.getElementById("address").value
-        obj.email=document.getElementById("mail").value
         localStorage.removeItem(email1)
-localStorage.setItem(obj.email,JSON.stringify(obj))
+        const save=document.getElementById("save")
+        save.addEventListener("click",()=>{
+            obj.name=document.getElementById("name").value
+            obj.username=document.getElementById("username").value
+            obj.address=document.getElementById("address").value
+            obj.mail=document.getElementById("mail").value
+        localStorage.setItem(obj.mail,JSON.stringify(obj))
         document.getElementById("name").value=obj.name
         document.getElementById("username").value=obj.username
         document.getElementById("address").value=obj.address
         document.getElementById("mail").value=obj.mail
         document.getElementById("heading").innerHTML=obj.name
+
+        })
+
+
 })
     }
 }
